@@ -2,164 +2,97 @@
 
 # Change Log
 
-This document serves as the change log for the ONIXLabs Corda Core API.
-
-## Version 1.2.0
-
-### Contract
-
-#### ContractID (interface)
-
-Defines the contract ID for a Corda contract. Rather than referencing the contract by a string or by its canonical name, implementing `ContractID` on a companion object adds the contract ID to the class for you automatically.
-
-#### SignedCommandData (interface)
-
-Defines a Corda contract command that maintains verifiable signature data. This can be used within a contract to check that a particular contract participant signed over the command - usually the transaction initiator.
-
-#### VerifiedCommandData (interface)
-
-Defines a Corda contract command that that localises its verification. Rather than commands simply being marker objects to determine which verification to execute, this leans towards the single responsibility principle, whereby each command is responsible for its verification.
-
-#### SignatureData (class)
-
-Represents a composite of both signed and unsigned data, which can be verified with a public key.
-
-### Workflow
-
-#### Extensions
-
--   Moved to new extension naming convention for maintainability.
--   Added extensions to filter a set of sessions to include or exclude certain counter-parties, or state participants.
-
-## Version 1.1.0
-
-### Contract
-
-#### Extensions
-
--   Moved to new extension file naming convention for maintainability.
--   Added extensions to obtain single inputs, reference inputs and outputs from a `LedgerTransaction`.
--   Added extension to cast `Iterable<StateAndRef<*>>` to `List<StateAndRef<T>>`.
-
-### Workflow
-
-#### Extensions
-
--   Moved to new extension naming convention for maintainability.
--   Added extensions to filter a set of sessions to include or exclude certain counter-parties, or state participants.
+This document serves as the change log for the ONIXLabs Kotlin Core API.
 
 ## Version 1.0.0
 
-### Contract
+#### ConsoleColor (enum)
 
-#### ChainState (interface)
+Specifies constants that define background and foreground console colors.
 
-Defines a Corda chain state. 
+#### DayOfMonth (class)
 
->   A chain state is similar to a `LinearState`, in that it represents a set of state transitions. Chain states adopt a concept similar to blockchain, where each new state transition references the previous one by it's `StateRef`, or null if it's the first state in the chain.
+Represents an ordinal occurrence of a day in the month.
 
-#### Hashable (interface)
+#### DayOfMonthOccurrence (enum)
 
-Defines an object that can produce a unique hash. 
+Specifies the ordinal occurrence of a day in the month.
 
->   This is useful if you require some level of state uniqueness.
+### Extensions
 
-#### Resolvable (interface)
+#### Iterable Extensions
 
-Defines an object which resolves a `ContractState`. 
+-   Extension to determine whether the number of elements that satisfy the specified predicate match the expected count.
+-   Extension to determine whether the iterable is empty or not empty.
+-   Extensions to determine whether the content in two iterable collections is identical.
 
->   This is the fundamental principle on which state pointers are implemented in Corda; their ability to maintain and resolve a reference back to another known state in the vault. The implementation here is flexible and open, allowing developers to model resolvable as a design pattern, rather than as a strict implementation detail.
+#### BigDecimal Extensions
 
-#### TransactionResolution (enum)
+-   Extension to determine whether the specified value represents an integer.
 
-Defines how to resolve states from a transaction, and is used by the `Resolvable` interface.
+#### KClass Extensions
 
-#### Extensions
+-   Extension to obtain the kotlin class of an object instance.
+-   Extensions to create an instance of the specified kotlin class.
+-   Extension to get the primary constructor for the specified kotlin class.
+-   Extensions to get immutable and mutable properties from the specified kotlin class.
 
--   Added extension to obtain a set of owning keys from a collection of `AbstractParty`.
--   Added extension to obtain a participant hash to determine state uniqueness by participation.
--   Added extensions to determine whether a chain state instance is pointing to a specified `StateRef`.
--   Added extension to cast an unknown `StateAndRef<*>` to a typed `StateAndRef<T>`.
+#### KType Extensions
 
-### Workflow
+-   Extension to get the simple name or fully qualified name, including type arguments for the specified kotlin type.
 
-#### FindStateFlow (abstract class)
+#### Duration Extensions
 
-Represents the base class for implementing a query that finds a single state.
+-   Extension to add days, hours, minutes, seconds, milliseconds and nanoseconds to the specified duration.
+-   Extensions to convert the specified duration to seconds, or to microseconds.
+-   Extension to convert the specified duration to the total length of the specified time unit.
 
-#### FindStatesFlow (abstract class)
+#### Byte Extensions
 
-Represents the base class for implementing a query that finds multiple states.
+-   Constant Byte representations of ZERO and ONE.
+-   Extensions to convert Byte to BigInteger or BigDecimal.
 
->   This design pattern enables developers to be more consistent in their approach to performing vault queries, regardless of whether they're being performed from within the node (using `ServiceHub`) or from an RPC client (using `CordaRPCOps`).
+#### Console Extensions
 
-#### Message (open class)
+-   Print and print-line actions which output the result of an action block.
+-   Print and print-line actions which output text in color using the ConsoleColor enum.
 
-Represents an open, transient message.
+#### Double Extensions
 
-#### MessageAcknowledgement (open class)
+-   Constant Double representations of ZERO and ONE.
+-   Extension to determine whether the specified Double value represents an integer.
+-   Extensions to convert Double to BigInteger or BigDecimal.
 
-Represents an open acknowledgement to a message.
+#### Float Extensions
 
-#### SendMessageFlow (class)
+-   Constant Float representations of ZERO and ONE.
+-   Extension to determine whether the specified Float value represents an integer.
+-   Extensions to convert Float to BigInteger or BigDecimal.
 
-Sends a message to other nodes on the Corda network.
+#### Int Extensions
 
-#### ReceiveMessageFlow (class)
+-   Constant Int representations of ZERO and ONE.
+-   Extensions to convert Int to BigInteger or BigDecimal.
 
-Receives a message from another node on the Corda network.
+#### Kotlin Extensions
 
-#### SendMessageAcknowledgementFlow (class)
+-   Extension to for-each over a sequence of items.
 
-Sends a message acknowledgement to other nodes on the Corda network.
+#### Long Extensions
 
-#### ReceiveMessageAcknowledgementFlow (class)
+-   Constant Long representations of ZERO and ONE.
+-   Extensions to convert Long to BigInteger or BigDecimal.
 
-Receives a message acknowledgement from another node on the Corda network.
+#### Short Extensions
 
-#### TransactionNote (class)
+-   Constant Short representations of ZERO and ONE.
+-   Extensions to convert Short to BigInteger or BigDecimal.
 
-Represents a wrapper around a transaction note and the transaction that the note belongs to.
+#### String Extensions
 
-#### SendTransactionNoteFlow (class)
-
-Sends a transaction note to other nodes on the Corda network for persistence.
-
-#### ReceiveTransactionNoteFlow (class)
-
-Receives a transaction note from another node on the Corda network, and optionally persists it.
-
->   All messaging APIs are part of the ONIXLabs Corda Code messaging protocol, which allows Corda nodes to send and receive transient messages and messages acknowledgements, which are not bound to the ledger.
-
-#### Extensions
-
--   Added extensions to obtain the first notary from the network map cache.
--   Added extensions to obtain a random notary from the network map cache.
--   Added extensions to obtain the preferred notary from the CorDapp config file.
--   Added extensions to set, and optionally log progress tracker steps.
--   Added extensions to initiate flow sessions for a collection of parties and/or state participants.
--   Added extensions to check that sufficient flow sessions have been passed for the specified states.
--   Added extensions to find transactions by transaction ID or `StateRef`.
--   Added constants for default sorting and default, or maximum size page specification.
--   Added extensions to  build complex query expressions.
-
-### Integration
-
-#### RPCService (abstract class)
-
-Represents the base class for implementing services that utilize `CordaRPCOps`.
-
-#### MessageService (class)
-
-Represents an RPC service for sending and subscribing to transient messages.
-
-#### MessageAcknowledgementService (class)
-
-Represents an RPC service for sending and subscribing to transience message acknowledgements.
-
-#### TransactionNoteService (class)
-
-Represents an RPC service for adding, sending and persisting transaction notes.
-
-
-
+-   Extension to wrap the current string inside the specified start and end strings.
+-   Extensions to format strings as...
+    -   UPPER_SNAKE_CASE
+    -   lower_snake_case
+    -   UPPER-KEBAB-CASE
+    -   lower-kebab-case

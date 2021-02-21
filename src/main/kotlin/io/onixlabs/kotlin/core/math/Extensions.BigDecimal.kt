@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package io.onixlabs.kotlin.core
+package io.onixlabs.kotlin.core.math
+
+import java.math.BigDecimal
 
 /**
- * Provides the constant value for unchecked cast suppression.
+ * Determines whether the specified value represents an integer.
+ *
+ * @return Returns true if the specified value represents an integer; otherwise, false.
  */
-internal const val UNCHECKED_CAST = "UNCHECKED_CAST"
-
-/**
- * Provides the constant value for unused member suppression.
- */
-internal const val UNUSED = "UNUSED"
+fun BigDecimal.isInteger(): Boolean = rem(BigDecimal.ONE).stripTrailingZeros() == BigDecimal.ZERO
