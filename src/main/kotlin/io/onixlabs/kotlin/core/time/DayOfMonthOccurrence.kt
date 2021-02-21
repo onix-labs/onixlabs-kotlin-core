@@ -21,7 +21,7 @@ import java.time.temporal.TemporalAccessor
 import java.time.temporal.TemporalAdjusters
 
 /**
- * Represents the ordinal occurrence of a day in the month.
+ * Specifies the ordinal occurrence of a day in the month.
  */
 enum class DayOfMonthOccurrence {
 
