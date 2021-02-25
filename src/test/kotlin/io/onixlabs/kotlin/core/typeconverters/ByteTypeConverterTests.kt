@@ -368,6 +368,6 @@ class ByteTypeConverterTests {
         }
 
         // Assert
-        assertEquals("Illegal type conversion. Cannot convert from 'java.util.UUID' to 'byte'.", result.message)
+        assertEquals("Illegal type conversion. Cannot convert from 'java.util.UUID' to 'kotlin.Byte'.", result.message)
     }
 }

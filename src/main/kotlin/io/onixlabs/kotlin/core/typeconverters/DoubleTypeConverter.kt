@@ -18,6 +18,7 @@ package io.onixlabs.kotlin.core.typeconverters
 
 import io.onixlabs.kotlin.core.ONE
 import io.onixlabs.kotlin.core.ZERO
+import io.onixlabs.kotlin.core.reflection.kotlinClass
 import io.onixlabs.kotlin.core.toBigInteger
 import io.onixlabs.kotlin.core.typeconverters.IllegalTypeConversionException.Companion.NUMERIC_OVERFLOW
 import java.math.BigInteger
@@ -43,7 +44,7 @@ class DoubleTypeConverter : TypeConverter<Double>() {
         is Double -> value
         is String -> value.toDouble()
         is Char -> value.toDouble()
-        else -> throw IllegalTypeConversionException(value.javaClass, Double::class.java)
+        else -> throw IllegalTypeConversionException(value.kotlinClass, Double::class)
     }
 
     /**

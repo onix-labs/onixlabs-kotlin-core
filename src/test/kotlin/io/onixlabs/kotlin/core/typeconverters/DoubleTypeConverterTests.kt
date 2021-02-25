@@ -180,7 +180,7 @@ class DoubleTypeConverterTests {
 
         // Assert
         assertEquals(
-            "Illegal type conversion. Cannot convert from 'java.util.UUID' to 'double'.",
+            "Illegal type conversion. Cannot convert from 'java.util.UUID' to 'kotlin.Double'.",
             result.message
         )
     }

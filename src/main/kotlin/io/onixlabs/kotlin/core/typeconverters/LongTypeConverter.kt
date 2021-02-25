@@ -20,6 +20,7 @@ import io.onixlabs.kotlin.core.ONE
 import io.onixlabs.kotlin.core.ZERO
 import io.onixlabs.kotlin.core.isInteger
 import io.onixlabs.kotlin.core.math.isInteger
+import io.onixlabs.kotlin.core.reflection.kotlinClass
 import io.onixlabs.kotlin.core.typeconverters.IllegalTypeConversionException.Companion.NUMERIC_LOSS_OF_PRECISION
 import io.onixlabs.kotlin.core.typeconverters.IllegalTypeConversionException.Companion.NUMERIC_OVERFLOW
 import java.math.BigDecimal
@@ -48,7 +49,7 @@ class LongTypeConverter : TypeConverter<Long>() {
         is BigDecimal -> value.toLongChecked()
         is String -> value.toLong()
         is Char -> value.toLong()
-        else -> throw IllegalTypeConversionException(value.javaClass, Long::class.java)
+        else -> throw IllegalTypeConversionException(value.kotlinClass, Long::class)
     }
 
     /**

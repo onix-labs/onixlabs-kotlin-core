@@ -49,6 +49,6 @@ class UUIDTypeConverterTests {
         }
 
         // Assert
-        assertEquals("Illegal type conversion. Cannot convert from 'java.lang.Integer' to 'java.util.UUID'.", result.message)
+        assertEquals("Illegal type conversion. Cannot convert from 'kotlin.Int' to 'java.util.UUID'.", result.message)
     }
 }

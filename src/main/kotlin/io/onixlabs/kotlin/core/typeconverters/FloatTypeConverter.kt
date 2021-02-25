@@ -18,6 +18,7 @@ package io.onixlabs.kotlin.core.typeconverters
 
 import io.onixlabs.kotlin.core.ONE
 import io.onixlabs.kotlin.core.ZERO
+import io.onixlabs.kotlin.core.reflection.kotlinClass
 
 /**
  * Provides a mechanism to safely convert the specified value value to the [Float] type.
@@ -38,6 +39,6 @@ class FloatTypeConverter : TypeConverter<Float>() {
         is Float -> value
         is String -> value.toFloat()
         is Char -> value.toFloat()
-        else -> throw IllegalTypeConversionException(value.javaClass, Float::class.java)
+        else -> throw IllegalTypeConversionException(value.kotlinClass, Float::class)
     }
 }

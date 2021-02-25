@@ -18,6 +18,7 @@ package io.onixlabs.kotlin.core.typeconverters
 
 import io.onixlabs.kotlin.core.isInteger
 import io.onixlabs.kotlin.core.math.isInteger
+import io.onixlabs.kotlin.core.reflection.kotlinClass
 import io.onixlabs.kotlin.core.toBigDecimal
 import io.onixlabs.kotlin.core.toBigInteger
 import io.onixlabs.kotlin.core.typeconverters.IllegalTypeConversionException.Companion.NUMERIC_LOSS_OF_PRECISION
@@ -52,7 +53,7 @@ class CharTypeConverter : TypeConverter<Char>() {
         is BigDecimal -> value.toCharChecked()
         is String -> value.toCharChecked()
         is Char -> value
-        else -> throw IllegalTypeConversionException(value.javaClass, Char::class.java)
+        else -> throw IllegalTypeConversionException(value.kotlinClass, Char::class)
     }
 
     /**

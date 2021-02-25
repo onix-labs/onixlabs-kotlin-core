@@ -16,6 +16,7 @@
 
 package io.onixlabs.kotlin.core.typeconverters
 
+import io.onixlabs.kotlin.core.reflection.kotlinClass
 import java.math.BigDecimal
 import java.math.BigInteger
 
@@ -41,6 +42,6 @@ class BigDecimalTypeConverter : TypeConverter<BigDecimal>() {
         is BigDecimal -> value
         is String -> value.toBigDecimal().stripTrailingZeros()
         is Char -> BigDecimal.valueOf(value.toLong())
-        else -> throw IllegalTypeConversionException(value.javaClass, BigDecimal::class.java)
+        else -> throw IllegalTypeConversionException(value.kotlinClass, BigDecimal::class)
     }
 }

@@ -16,6 +16,7 @@
 
 package io.onixlabs.kotlin.core.typeconverters
 
+import io.onixlabs.kotlin.core.reflection.kotlinClass
 import java.util.*
 
 /**
@@ -32,7 +33,7 @@ class UUIDTypeConverter : TypeConverter<UUID>() {
     override fun convert(value: Any): UUID = when (value) {
         is String -> value.toUUIDChecked()
         is UUID -> value
-        else -> throw IllegalTypeConversionException(value.javaClass, UUID::class.java)
+        else -> throw IllegalTypeConversionException(value.kotlinClass, UUID::class)
     }
 
     /**

@@ -348,6 +348,6 @@ class CharTypeConverterTests {
         }
 
         // Assert
-        assertEquals("Illegal type conversion. Cannot convert from 'java.util.UUID' to 'char'.", result.message)
+        assertEquals("Illegal type conversion. Cannot convert from 'java.util.UUID' to 'kotlin.Char'.", result.message)
     }
 }

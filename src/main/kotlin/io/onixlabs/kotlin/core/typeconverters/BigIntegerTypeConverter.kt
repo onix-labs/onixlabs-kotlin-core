@@ -18,6 +18,7 @@ package io.onixlabs.kotlin.core.typeconverters
 
 import io.onixlabs.kotlin.core.isInteger
 import io.onixlabs.kotlin.core.math.isInteger
+import io.onixlabs.kotlin.core.reflection.kotlinClass
 import io.onixlabs.kotlin.core.typeconverters.IllegalTypeConversionException.Companion.NUMERIC_LOSS_OF_PRECISION
 import java.math.BigDecimal
 import java.math.BigInteger
@@ -45,7 +46,7 @@ class BigIntegerTypeConverter : TypeConverter<BigInteger>() {
         is BigDecimal -> value.toBigIntegerChecked()
         is String -> value.toBigInteger()
         is Char -> BigInteger.valueOf(value.toLong())
-        else -> throw IllegalTypeConversionException(value.javaClass, BigInteger::class.java)
+        else -> throw IllegalTypeConversionException(value.kotlinClass, BigInteger::class)
     }
 
     /**

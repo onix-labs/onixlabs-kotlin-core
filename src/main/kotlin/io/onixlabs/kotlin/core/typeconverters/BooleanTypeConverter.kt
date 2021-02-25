@@ -16,6 +16,8 @@
 
 package io.onixlabs.kotlin.core.typeconverters
 
+import io.onixlabs.kotlin.core.reflection.kotlinClass
+
 /**
  * Provides a mechanism to safely convert the specified value value to the [Boolean] type.
  */
@@ -38,7 +40,7 @@ class BooleanTypeConverter : TypeConverter<Boolean>() {
         is Number -> value.toBooleanChecked()
         is String -> value.toBooleanChecked()
         is Char -> value.toBooleanChecked()
-        else -> throw IllegalTypeConversionException(value.javaClass, Boolean::class.java)
+        else -> throw IllegalTypeConversionException(value.kotlinClass, Boolean::class)
     }
 
     /**

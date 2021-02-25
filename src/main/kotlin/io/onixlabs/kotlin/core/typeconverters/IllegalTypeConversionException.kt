@@ -16,6 +16,8 @@
 
 package io.onixlabs.kotlin.core.typeconverters
 
+import kotlin.reflect.KClass
+
 /**
  * Represents the exception that is thrown when a type converter is unable to convert the specified value.
  *
@@ -44,7 +46,7 @@ class IllegalTypeConversionException(message: String, cause: Throwable? = null) 
      * @param inputClass The input class.
      * @param outputClass The output class.
      */
-    constructor(inputClass: Class<*>, outputClass: Class<*>) : this(
-        "Illegal type conversion. Cannot convert from '${inputClass.canonicalName}' to '${outputClass.canonicalName}'."
+    constructor(inputClass: KClass<*>, outputClass: KClass<*>) : this(
+        "Illegal type conversion. Cannot convert from '${inputClass.qualifiedName}' to '${outputClass.qualifiedName}'."
     )
 }

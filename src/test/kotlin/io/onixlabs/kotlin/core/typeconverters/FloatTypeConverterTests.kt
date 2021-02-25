@@ -134,6 +134,6 @@ class FloatTypeConverterTests {
         }
 
         // Assert
-        assertEquals("Illegal type conversion. Cannot convert from 'java.util.UUID' to 'float'.", result.message)
+        assertEquals("Illegal type conversion. Cannot convert from 'java.util.UUID' to 'kotlin.Float'.", result.message)
     }
 }

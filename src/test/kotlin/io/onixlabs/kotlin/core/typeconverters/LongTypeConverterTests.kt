@@ -288,6 +288,6 @@ class LongTypeConverterTests {
         }
 
         // Assert
-        assertEquals("Illegal type conversion. Cannot convert from 'java.util.UUID' to 'long'.", result.message)
+        assertEquals("Illegal type conversion. Cannot convert from 'java.util.UUID' to 'kotlin.Long'.", result.message)
     }
 }

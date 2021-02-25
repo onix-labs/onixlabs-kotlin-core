@@ -336,6 +336,6 @@ class ShortTypeConverterTests {
         }
 
         // Assert
-        assertEquals("Illegal type conversion. Cannot convert from 'java.util.UUID' to 'short'.", result.message)
+        assertEquals("Illegal type conversion. Cannot convert from 'java.util.UUID' to 'kotlin.Short'.", result.message)
     }
 }
