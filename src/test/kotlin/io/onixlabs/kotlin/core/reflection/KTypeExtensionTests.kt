@@ -32,7 +32,7 @@ class KTypeExtensionTests {
         val type = UUID::class.createType(nullable = false)
 
         // Act
-        val name = type.name
+        val name = type.formattedSimpleName
 
         // Assert
         assertEquals("UUID", name)
@@ -45,7 +45,7 @@ class KTypeExtensionTests {
         val type = UUID::class.createType(nullable = true)
 
         // Act
-        val name = type.name
+        val name = type.formattedSimpleName
 
         // Assert
         assertEquals("UUID?", name)
@@ -59,7 +59,7 @@ class KTypeExtensionTests {
         val type = ArrayList::class.createType(arguments = arguments, nullable = false)
 
         // Act
-        val name = type.name
+        val name = type.formattedSimpleName
 
         // Assert
         assertEquals("ArrayList<Int>", name)
@@ -73,7 +73,7 @@ class KTypeExtensionTests {
         val type = ArrayList::class.createType(arguments = arguments, nullable = false)
 
         // Act
-        val name = type.name
+        val name = type.formattedSimpleName
 
         // Assert
         assertEquals("ArrayList<Int?>", name)
@@ -87,7 +87,7 @@ class KTypeExtensionTests {
         val type = ArrayList::class.createType(arguments = arguments, nullable = true)
 
         // Act
-        val name = type.name
+        val name = type.formattedSimpleName
 
         // Assert
         assertEquals("ArrayList<Int>?", name)
@@ -101,7 +101,7 @@ class KTypeExtensionTests {
         val type = ArrayList::class.createType(arguments = arguments, nullable = true)
 
         // Act
-        val name = type.name
+        val name = type.formattedSimpleName
 
         // Assert
         assertEquals("ArrayList<Int?>?", name)
@@ -119,7 +119,7 @@ class KTypeExtensionTests {
         val type = Map::class.createType(arguments = arguments, nullable = false)
 
         // Act
-        val name = type.name
+        val name = type.formattedSimpleName
 
         // Assert
         assertEquals("Map<String, Double>", name)
@@ -137,7 +137,7 @@ class KTypeExtensionTests {
         val type = Map::class.createType(arguments = arguments, nullable = false)
 
         // Act
-        val name = type.name
+        val name = type.formattedSimpleName
 
         // Assert
         assertEquals("Map<String?, Double?>", name)
@@ -155,7 +155,7 @@ class KTypeExtensionTests {
         val type = Map::class.createType(arguments = arguments, nullable = true)
 
         // Act
-        val name = type.name
+        val name = type.formattedSimpleName
 
         // Assert
         assertEquals("Map<String, Double>?", name)
@@ -173,7 +173,7 @@ class KTypeExtensionTests {
         val type = Map::class.createType(arguments = arguments, nullable = true)
 
         // Act
-        val name = type.name
+        val name = type.formattedSimpleName
 
         // Assert
         assertEquals("Map<String?, Double?>?", name)
@@ -187,7 +187,7 @@ class KTypeExtensionTests {
         val type = ArrayList::class.createType(arguments = arguments, nullable = false)
 
         // Act
-        val name = type.name
+        val name = type.formattedSimpleName
 
         // Assert
         //fail(type.arguments.joinToString())
@@ -202,7 +202,7 @@ class KTypeExtensionTests {
         val type = ArrayList::class.createType(arguments = arguments, nullable = true)
 
         // Act
-        val name = type.name
+        val name = type.formattedSimpleName
 
         // Assert
         //fail(type.arguments.joinToString())
@@ -216,7 +216,7 @@ class KTypeExtensionTests {
         val type = UUID::class.createType(nullable = false)
 
         // Act
-        val name = type.fullName
+        val name = type.formattedQualifiedName
 
         // Assert
         assertEquals("java.util.UUID", name)
@@ -229,7 +229,7 @@ class KTypeExtensionTests {
         val type = UUID::class.createType(nullable = true)
 
         // Act
-        val name = type.fullName
+        val name = type.formattedQualifiedName
 
         // Assert
         assertEquals("java.util.UUID?", name)
@@ -243,7 +243,7 @@ class KTypeExtensionTests {
         val type = ArrayList::class.createType(arguments = arguments, nullable = false)
 
         // Act
-        val name = type.fullName
+        val name = type.formattedQualifiedName
 
         // Assert
         assertEquals("java.util.ArrayList<kotlin.Int>", name)
@@ -257,7 +257,7 @@ class KTypeExtensionTests {
         val type = ArrayList::class.createType(arguments = arguments, nullable = false)
 
         // Act
-        val name = type.fullName
+        val name = type.formattedQualifiedName
 
         // Assert
         assertEquals("java.util.ArrayList<kotlin.Int?>", name)
@@ -271,7 +271,7 @@ class KTypeExtensionTests {
         val type = ArrayList::class.createType(arguments = arguments, nullable = true)
 
         // Act
-        val name = type.fullName
+        val name = type.formattedQualifiedName
 
         // Assert
         assertEquals("java.util.ArrayList<kotlin.Int>?", name)
@@ -285,7 +285,7 @@ class KTypeExtensionTests {
         val type = ArrayList::class.createType(arguments = arguments, nullable = true)
 
         // Act
-        val name = type.fullName
+        val name = type.formattedQualifiedName
 
         // Assert
         assertEquals("java.util.ArrayList<kotlin.Int?>?", name)
@@ -303,7 +303,7 @@ class KTypeExtensionTests {
         val type = Map::class.createType(arguments = arguments, nullable = false)
 
         // Act
-        val name = type.fullName
+        val name = type.formattedQualifiedName
 
         // Assert
         assertEquals("kotlin.collections.Map<kotlin.String, kotlin.Double>", name)
@@ -321,7 +321,7 @@ class KTypeExtensionTests {
         val type = Map::class.createType(arguments = arguments, nullable = false)
 
         // Act
-        val name = type.fullName
+        val name = type.formattedQualifiedName
 
         // Assert
         assertEquals("kotlin.collections.Map<kotlin.String?, kotlin.Double?>", name)
@@ -339,7 +339,7 @@ class KTypeExtensionTests {
         val type = Map::class.createType(arguments = arguments, nullable = true)
 
         // Act
-        val name = type.fullName
+        val name = type.formattedQualifiedName
 
         // Assert
         assertEquals("kotlin.collections.Map<kotlin.String, kotlin.Double>?", name)
@@ -357,7 +357,7 @@ class KTypeExtensionTests {
         val type = Map::class.createType(arguments = arguments, nullable = true)
 
         // Act
-        val name = type.fullName
+        val name = type.formattedQualifiedName
 
         // Assert
         assertEquals("kotlin.collections.Map<kotlin.String?, kotlin.Double?>?", name)
@@ -371,7 +371,7 @@ class KTypeExtensionTests {
         val type = ArrayList::class.createType(arguments = arguments, nullable = false)
 
         // Act
-        val name = type.fullName
+        val name = type.formattedQualifiedName
 
         // Assert
         assertEquals("java.util.ArrayList<*>", name)
@@ -385,7 +385,7 @@ class KTypeExtensionTests {
         val type = ArrayList::class.createType(arguments = arguments, nullable = true)
 
         // Act
-        val name = type.fullName
+        val name = type.formattedQualifiedName
 
         // Assert
         assertEquals("java.util.ArrayList<*>?", name)

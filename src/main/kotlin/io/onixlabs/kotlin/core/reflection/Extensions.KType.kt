@@ -25,17 +25,20 @@ import kotlin.reflect.jvm.jvmErasure
 /**
  * Gets the formatted simple name of the type, including any generic type arguments.
  */
-val KType.name: String get() = "${jvmErasure.simpleName}${getFormattedArguments(false)}$nullableToken"
+val KType.formattedSimpleName: String
+    get() = "${jvmErasure.simpleName}${getFormattedArguments(false)}$nullableToken"
 
 /**
  * Gets the formatted qualified name of the type, including any generic type arguments.
  */
-val KType.fullName: String get() = "${jvmErasure.qualifiedName}${getFormattedArguments(true)}$nullableToken"
+val KType.formattedQualifiedName: String
+    get() = "${jvmErasure.qualifiedName}${getFormattedArguments(true)}$nullableToken"
 
 /**
  * Gets a nullable token for the specified string, or an empty string if the type is non-nullable.
  */
-private val KType.nullableToken: String get() = if (isMarkedNullable) "?" else String.EMPTY
+private val KType.nullableToken: String
+    get() = if (isMarkedNullable) "?" else String.EMPTY
 
 /**
  * Gets a formatted list of generic type argument names.

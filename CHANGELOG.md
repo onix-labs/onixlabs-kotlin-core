@@ -4,6 +4,34 @@
 
 This document serves as the change log for the ONIXLabs Kotlin Core API.
 
+## Version 2.0.0
+
+#### TypeConverter (abstract class)
+
+Represents the base class for implementing type converters. Type converters represent a mechanism to convert from one type to another, using type-safe convensions. 
+
+The following type converters are implemented:
+
+-   BigDecimalTypeConverter
+-   BigIntegerTypeConverter
+-   BooleanTypeConverter
+-   ByteTypeConverter
+-   CharTypeConverter
+-   DoubleTypeConverter
+-   FloatTypeConverter
+-   IntTypeConverter
+-   LongTypeConverter
+-   ShortTypeConverter
+-   StringTypeConverter
+-   UUIDTypeConverter
+
+### Extensions
+
+#### KType Extensions
+
+-   Renamed `name` to `formattedSimpleName`.
+-   Renamed `fullName` to `formattedQualifiedName`.
+
 ## Version 1.0.0
 
 #### ConsoleColor (enum)
